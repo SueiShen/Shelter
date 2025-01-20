@@ -162,10 +162,10 @@ public class MoveObjectController : MonoBehaviour
 		string rtnVal;
 		if (isOpen)
 		{
-			rtnVal = "Press E/Fire1 to Close";
+			rtnVal = "按 E 關閉";
 		}else
 		{
-			rtnVal = "Press E/Fire1 to Open";
+			rtnVal = "按 E 開啟";
 		}
 
 		return rtnVal;
