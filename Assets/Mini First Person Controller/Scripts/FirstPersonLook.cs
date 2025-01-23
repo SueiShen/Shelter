@@ -6,7 +6,7 @@ public class FirstPersonLook : MonoBehaviour
     Transform character;
     public float sensitivity = 2;
     public float smoothing = 1.5f;
-    public bool moveable = true;
+    public bool Turnable = true;
 
     Vector2 velocity;
     Vector2 frameVelocity;
@@ -26,7 +26,7 @@ public class FirstPersonLook : MonoBehaviour
     
     void Update()
     {
-        if (moveable)
+        if (Turnable)
         {
             // Get smooth velocity.
             Vector2 mouseDelta = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
