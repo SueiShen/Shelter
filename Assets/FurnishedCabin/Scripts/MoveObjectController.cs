@@ -151,7 +151,7 @@ public class MoveObjectController : MonoBehaviour
 	private void setupGui()
 	{
 		guiStyle = new GUIStyle();
-		guiStyle.fontSize = 16;
+		guiStyle.fontSize = 36;
 		guiStyle.fontStyle = FontStyle.Bold;
 		guiStyle.normal.textColor = Color.white;
 		msg = "Press E/Fire1 to Open";

@@ -12,12 +12,16 @@ public class NewMonoBehaviourScript : MonoBehaviour
     private string msg;
 
     private int rayLayerMask;
+    private GameObject UI_Contorller;
+    private ModeContorller ModeContorller;
 
     void Start()
     {
         // Initialize references
         player = GameObject.FindGameObjectWithTag("Player");
         fpsCam = Camera.main;
+        UI_Contorller = GameObject.Find("UI_Contorller");
+        ModeContorller = UI_Contorller.GetComponent<ModeContorller>();
 
         if (fpsCam == null)
         {
@@ -37,7 +41,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (other.gameObject == player)
         {
             playerEntered = true;
-            Debug.Log("Player entered interaction zone.");
+            //Debug.Log("Player entered interaction zone.");
         }
     }
 
@@ -47,15 +51,15 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             playerEntered = false;
             showInteractMsg = false;
-            Debug.Log("Player exited interaction zone.");
+            //Debug.Log("Player exited interaction zone.");
         }
     }
 
     void Update()
     {
-        if (playerEntered)
+        if (playerEntered && (ModeContorller.mode == "Sights_mode"))
         {
-            Debug.Log("Player is in interaction zone.");
+            //Debug.Log("Player is in interaction zone.");
             // Center point of viewport in World space
             Vector3 rayOrigin = fpsCam.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0f));
             RaycastHit hit;
@@ -63,33 +67,34 @@ public class NewMonoBehaviourScript : MonoBehaviour
             // Perform raycast
             if (Physics.Raycast(rayOrigin, fpsCam.transform.forward, out hit, reachRange, rayLayerMask))
             {
-                Debug.Log($"Raycast hit object: {hit.collider.gameObject.name}");
+                //Debug.Log($"Raycast hit object: {hit.collider.gameObject.name}");
                 PetableObj petableObject = null;
 
                 // Check if the hit object or its parent has PetableObj
                 if (!isEqualToParent(hit.collider, out petableObject))
                 {
-                    Debug.Log("Raycast hit an object, but it's not interactable.");
+                    //Debug.Log("Raycast hit an object, but it's not interactable.");
                     return;
                 }
 
                 if (petableObject != null)
                 {
                     showInteractMsg = true;
-                    msg = "按 E 撫摸";
+                    msg = "按 E 互動";
 
                     if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {
-                        Debug.Log("E key or Fire1 button pressed.");
+                        //Debug.Log("E key or Fire1 button pressed.");
                         //petableObject.Pet(); // 假設 PetableObj 有一個 Pet 方法
-                        msg = "撫摸完成！";
+                        ModeContorller.mode = "Pet_mode";
+                        showInteractMsg = false;
                     }
                 }
             }
             else
             {
                 showInteractMsg = false;
-                Debug.Log("Raycast did not hit any object.");
+                //Debug.Log("Raycast did not hit any object.");
             }
         }
     }
@@ -134,7 +139,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     {
         guiStyle = new GUIStyle
         {
-            fontSize = 16,
+            fontSize = 36,
             fontStyle = FontStyle.Bold,
             normal = { textColor = Color.white }
         };
