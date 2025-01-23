@@ -7,6 +7,7 @@ public class ModeContorller : MonoBehaviour
     private Transform FPC;
     private FirstPersonLook FirstPersonLook;
     private FirstPersonMovement FirstPersonMovement;
+    private Crouch Crouch;
     private Jump Jump;
     private Transform Pet_Canvas;
 
@@ -19,6 +20,7 @@ public class ModeContorller : MonoBehaviour
         Transform controller = FPC.parent;
         FirstPersonMovement = controller.GetComponent<FirstPersonMovement>();
         Jump = controller.GetComponent<Jump>();
+        Crouch = controller.GetComponent<Crouch>();
         Pet_Canvas = transform.Find("Pet_Canvas");
     }
 

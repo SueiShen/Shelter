@@ -1,8 +1,9 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class PetableContorller : MonoBehaviour
 {
     public float reachRange = 1.8f;
+    public GameObject hitTarget ;
     private Camera fpsCam;
     private GameObject player;
 
@@ -81,6 +82,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
                 {
                     showInteractMsg = true;
                     msg = "按 E 互動";
+                    hitTarget = hit.collider.gameObject;
 
                     if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Crouch : MonoBehaviour
 {
     public KeyCode key = KeyCode.LeftControl;
-
+    public bool Crouchable = true;
     [Header("Slow Movement")]
     [Tooltip("Movement to slow down when crouched.")]
     public FirstPersonMovement movement;
@@ -16,7 +16,7 @@ public class Crouch : MonoBehaviour
     [HideInInspector]
     public float? defaultHeadYLocalPosition;
     public float crouchYHeadPosition = 1;
-    
+
     [Tooltip("Collider to lower when crouched.")]
     public CapsuleCollider colliderToLower;
     [HideInInspector]
@@ -36,75 +36,78 @@ public class Crouch : MonoBehaviour
 
     void LateUpdate()
     {
-        if (Input.GetKey(key))
+        if (Crouchable)
         {
-            // Enforce a low head.
-            if (headToLower)
+            if (Input.GetKey(key))
             {
-                // If we don't have the defaultHeadYLocalPosition, get it now.
-                if (!defaultHeadYLocalPosition.HasValue)
-                {
-                    defaultHeadYLocalPosition = headToLower.localPosition.y;
-                }
-
-                // Lower the head.
-                headToLower.localPosition = new Vector3(headToLower.localPosition.x, crouchYHeadPosition, headToLower.localPosition.z);
-            }
-
-            // Enforce a low colliderToLower.
-            if (colliderToLower)
-            {
-                // If we don't have the defaultColliderHeight, get it now.
-                if (!defaultColliderHeight.HasValue)
-                {
-                    defaultColliderHeight = colliderToLower.height;
-                }
-
-                // Get lowering amount.
-                float loweringAmount;
-                if(defaultHeadYLocalPosition.HasValue)
-                {
-                    loweringAmount = defaultHeadYLocalPosition.Value - crouchYHeadPosition;
-                }
-                else
-                {
-                    loweringAmount = defaultColliderHeight.Value * .5f;
-                }
-
-                // Lower the colliderToLower.
-                colliderToLower.height = Mathf.Max(defaultColliderHeight.Value - loweringAmount, 0);
-                colliderToLower.center = Vector3.up * colliderToLower.height * .5f;
-            }
-
-            // Set IsCrouched state.
-            if (!IsCrouched)
-            {
-                IsCrouched = true;
-                SetSpeedOverrideActive(true);
-                CrouchStart?.Invoke();
-            }
-        }
-        else
-        {
-            if (IsCrouched)
-            {
-                // Rise the head back up.
+                // Enforce a low head.
                 if (headToLower)
                 {
-                    headToLower.localPosition = new Vector3(headToLower.localPosition.x, defaultHeadYLocalPosition.Value, headToLower.localPosition.z);
+                    // If we don't have the defaultHeadYLocalPosition, get it now.
+                    if (!defaultHeadYLocalPosition.HasValue)
+                    {
+                        defaultHeadYLocalPosition = headToLower.localPosition.y;
+                    }
+
+                    // Lower the head.
+                    headToLower.localPosition = new Vector3(headToLower.localPosition.x, crouchYHeadPosition, headToLower.localPosition.z);
                 }
 
-                // Reset the colliderToLower's height.
+                // Enforce a low colliderToLower.
                 if (colliderToLower)
                 {
-                    colliderToLower.height = defaultColliderHeight.Value;
+                    // If we don't have the defaultColliderHeight, get it now.
+                    if (!defaultColliderHeight.HasValue)
+                    {
+                        defaultColliderHeight = colliderToLower.height;
+                    }
+
+                    // Get lowering amount.
+                    float loweringAmount;
+                    if (defaultHeadYLocalPosition.HasValue)
+                    {
+                        loweringAmount = defaultHeadYLocalPosition.Value - crouchYHeadPosition;
+                    }
+                    else
+                    {
+                        loweringAmount = defaultColliderHeight.Value * .5f;
+                    }
+
+                    // Lower the colliderToLower.
+                    colliderToLower.height = Mathf.Max(defaultColliderHeight.Value - loweringAmount, 0);
                     colliderToLower.center = Vector3.up * colliderToLower.height * .5f;
                 }
 
-                // Reset IsCrouched.
-                IsCrouched = false;
-                SetSpeedOverrideActive(false);
-                CrouchEnd?.Invoke();
+                // Set IsCrouched state.
+                if (!IsCrouched)
+                {
+                    IsCrouched = true;
+                    SetSpeedOverrideActive(true);
+                    CrouchStart?.Invoke();
+                }
+            }
+            else
+            {
+                if (IsCrouched)
+                {
+                    // Rise the head back up.
+                    if (headToLower)
+                    {
+                        headToLower.localPosition = new Vector3(headToLower.localPosition.x, defaultHeadYLocalPosition.Value, headToLower.localPosition.z);
+                    }
+
+                    // Reset the colliderToLower's height.
+                    if (colliderToLower)
+                    {
+                        colliderToLower.height = defaultColliderHeight.Value;
+                        colliderToLower.center = Vector3.up * colliderToLower.height * .5f;
+                    }
+
+                    // Reset IsCrouched.
+                    IsCrouched = false;
+                    SetSpeedOverrideActive(false);
+                    CrouchEnd?.Invoke();
+                }
             }
         }
     }
@@ -114,7 +117,7 @@ public class Crouch : MonoBehaviour
     void SetSpeedOverrideActive(bool state)
     {
         // Stop if there is no movement component.
-        if(!movement)
+        if (!movement)
         {
             return;
         }
