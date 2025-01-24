@@ -3,6 +3,7 @@ using UnityEngine;
 public class ModeController : MonoBehaviour
 {
     public string mode = "Sights_mode";
+    public Texture2D PetCursor;
     private Transform Sights_Canvas;
     private Transform FPC;
     private FirstPersonLook FirstPersonLook;
@@ -12,6 +13,7 @@ public class ModeController : MonoBehaviour
     private Transform Pet_Canvas;
     private PetableController PetableController;
     private PetableObj PetableObj;
+    private Transform FirstPersonController;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +27,7 @@ public class ModeController : MonoBehaviour
         Crouch = controller.GetComponent<Crouch>();
         Pet_Canvas = transform.Find("Pet_Canvas");
         PetableController = GetComponent<PetableController>();
+        FirstPersonController = gameObject.transform.parent;
 
     }
 
@@ -39,13 +42,16 @@ public class ModeController : MonoBehaviour
                 Sights_Canvas.gameObject.SetActive(true);
                 Moveable(true);
                 Cursor.lockState = CursorLockMode.Locked;
-
+                Cursor.visible = true;
+                //Cursor.SetCursor(null,Vector2.zero,CursorMode.Auto);
                 break;
             case "Pet_mode":
                 UIclose();
                 Pet_Canvas.gameObject.SetActive(true);
                 Moveable(false);
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible=false;
+                //Cursor.SetCursor(PetCursor,new Vector2(0,0),CursorMode.Auto);
 
                 break;
         }
@@ -62,11 +68,13 @@ public class ModeController : MonoBehaviour
         Jump.Jumpable = move;
         Crouch.Crouchable = move;
     }
-
+    private Quaternion savedRotation;
     public void LookTarget(Transform Target)
     {
-        Debug.Log("LookTarget");
+        //Debug.Log("LookTarget");
         FPC.LookAt(Target);
+
+        FirstPersonController.position = Target.position + Target.forward*1f;
     }
 
 }
