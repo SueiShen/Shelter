@@ -102,7 +102,7 @@ public class PetableController : MonoBehaviour
         }
         if (playerEntered && (ModeController.mode == "Pet_mode"))
         {
-            Debug.Log("GoLookTarget");
+            //Debug.Log("GoLookTarget");
             ModeController.LookTarget(gameObject.transform);
         }
     }
