@@ -10,8 +10,8 @@ public class ModeController : MonoBehaviour
     private Crouch Crouch;
     private Jump Jump;
     private Transform Pet_Canvas;
+    private PetableController PetableController;
     private PetableObj PetableObj;
-    private GameObject hitTarget;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,6 +24,7 @@ public class ModeController : MonoBehaviour
         Jump = controller.GetComponent<Jump>();
         Crouch = controller.GetComponent<Crouch>();
         Pet_Canvas = transform.Find("Pet_Canvas");
+        PetableController = GetComponent<PetableController>();
 
     }
 
@@ -45,11 +46,6 @@ public class ModeController : MonoBehaviour
                 Pet_Canvas.gameObject.SetActive(true);
                 Moveable(false);
                 Cursor.lockState = CursorLockMode.None;
-                hitTarget = PetableObj.correctObj();
-                if (hitTarget != null)
-                {
-                    FPC.LookAt(hitTarget.transform);
-                }
 
                 break;
         }
@@ -66,8 +62,11 @@ public class ModeController : MonoBehaviour
         Jump.Jumpable = move;
         Crouch.Crouchable = move;
     }
+
     public void LookTarget(Transform Target)
     {
-        transform.LookAt(Target);
+        Debug.Log("LookTarget");
+        FPC.LookAt(Target);
     }
+
 }

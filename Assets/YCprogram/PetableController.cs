@@ -3,7 +3,7 @@ using UnityEngine;
 public class PetableController : MonoBehaviour
 {
     public float reachRange = 1.8f;
-    public GameObject hitTarget ;
+    public GameObject hitTarget;
     private GameObject FPC;
     private Camera fpsCam;
     private GameObject player;
@@ -90,7 +90,7 @@ public class PetableController : MonoBehaviour
                         //Debug.Log("E key or Fire1 button pressed.");
                         ModeController.mode = "Pet_mode";
                         showInteractMsg = false;
-                        ModeController.LookTarget(gameObject.transform);
+                        //ModeController.LookTarget(gameObject.transform);
                     }
                 }
             }
@@ -99,6 +99,11 @@ public class PetableController : MonoBehaviour
                 showInteractMsg = false;
                 //Debug.Log("Raycast did not hit any object.");
             }
+        }
+        if (playerEntered && (ModeController.mode == "Pet_mode"))
+        {
+            Debug.Log("GoLookTarget");
+            ModeController.LookTarget(gameObject.transform);
         }
     }
 
@@ -155,10 +160,6 @@ public class PetableController : MonoBehaviour
         {
             GUI.Label(new Rect(50, Screen.height - 50, 200, 50), msg, guiStyle);
         }
-    }
-    public GameObject GetHitTarget()
-    {
-        return hitTarget; // 提供公共方法獲取 hitTarget
     }
     #endregion
 }

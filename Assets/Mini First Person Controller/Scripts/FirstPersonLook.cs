@@ -43,8 +43,8 @@ public class FirstPersonLook : MonoBehaviour
         {
             // Do not update rotation when moveable is false.
             // Optionally, you can reset the rotations to avoid it retaining previous values.
-            transform.localRotation = Quaternion.identity;
-            character.localRotation = Quaternion.identity;
+            //transform.localRotation = Quaternion.identity;
+            //character.localRotation = Quaternion.identity;
         }
     }
 
