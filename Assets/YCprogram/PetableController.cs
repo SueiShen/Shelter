@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class PetableContorller : MonoBehaviour
+public class PetableController : MonoBehaviour
 {
     public float reachRange = 1.8f;
     public GameObject hitTarget ;
+    private GameObject FPC;
     private Camera fpsCam;
     private GameObject player;
 
@@ -13,17 +14,17 @@ public class PetableContorller : MonoBehaviour
     private string msg;
 
     private int rayLayerMask;
-    private GameObject UI_Contorller;
-    private ModeContorller ModeContorller;
+    private GameObject UI_Controller;
+    private ModeController ModeController;
 
     void Start()
     {
         // Initialize references
         player = GameObject.FindGameObjectWithTag("Player");
         fpsCam = Camera.main;
-        UI_Contorller = GameObject.Find("UI_Contorller");
-        ModeContorller = UI_Contorller.GetComponent<ModeContorller>();
-
+        UI_Controller = GameObject.Find("UI_Controller");
+        ModeController = UI_Controller.GetComponent<ModeController>();
+        FPC = GameObject.Find("First Person Camera");
         if (fpsCam == null)
         {
             Debug.LogError("A camera tagged 'MainCamera' is missing.");
@@ -58,7 +59,7 @@ public class PetableContorller : MonoBehaviour
 
     void Update()
     {
-        if (playerEntered && (ModeContorller.mode == "Sights_mode"))
+        if (playerEntered && (ModeController.mode == "Sights_mode"))
         {
             //Debug.Log("Player is in interaction zone.");
             // Center point of viewport in World space
@@ -87,9 +88,9 @@ public class PetableContorller : MonoBehaviour
                     if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {
                         //Debug.Log("E key or Fire1 button pressed.");
-                        //petableObject.Pet(); // 假設 PetableObj 有一個 Pet 方法
-                        ModeContorller.mode = "Pet_mode";
+                        ModeController.mode = "Pet_mode";
                         showInteractMsg = false;
+                        ModeController.LookTarget(gameObject.transform);
                     }
                 }
             }
@@ -155,6 +156,9 @@ public class PetableContorller : MonoBehaviour
             GUI.Label(new Rect(50, Screen.height - 50, 200, 50), msg, guiStyle);
         }
     }
-
+    public GameObject GetHitTarget()
+    {
+        return hitTarget; // 提供公共方法獲取 hitTarget
+    }
     #endregion
 }

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ModeContorller : MonoBehaviour
+public class ModeController : MonoBehaviour
 {
     public string mode = "Sights_mode";
     private Transform Sights_Canvas;
@@ -10,6 +10,8 @@ public class ModeContorller : MonoBehaviour
     private Crouch Crouch;
     private Jump Jump;
     private Transform Pet_Canvas;
+    private PetableObj PetableObj;
+    private GameObject hitTarget;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +24,7 @@ public class ModeContorller : MonoBehaviour
         Jump = controller.GetComponent<Jump>();
         Crouch = controller.GetComponent<Crouch>();
         Pet_Canvas = transform.Find("Pet_Canvas");
+
     }
 
     // Update is called once per frame
@@ -42,6 +45,12 @@ public class ModeContorller : MonoBehaviour
                 Pet_Canvas.gameObject.SetActive(true);
                 Moveable(false);
                 Cursor.lockState = CursorLockMode.None;
+                hitTarget = PetableObj.correctObj();
+                if (hitTarget != null)
+                {
+                    FPC.LookAt(hitTarget.transform);
+                }
+
                 break;
         }
     }
@@ -55,5 +64,10 @@ public class ModeContorller : MonoBehaviour
         FirstPersonLook.Turnable = move;
         FirstPersonMovement.Moveable = move;
         Jump.Jumpable = move;
+        Crouch.Crouchable = move;
+    }
+    public void LookTarget(Transform Target)
+    {
+        transform.LookAt(Target);
     }
 }

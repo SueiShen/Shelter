@@ -869,7 +869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9373723
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalRotation.x
@@ -877,7 +877,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.34832928
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalRotation.z
@@ -889,7 +889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -40.77
       objectReference: {fileID: 0}
     - target: {fileID: 6349384442204505658, guid: cc6b3e636f70b5044994ea3e192717ac, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1246,6 +1246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachRange: 1.8
+  hitTarget: {fileID: 0}
 --- !u!65 &65436018
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1279,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc88751eccf69784dbc8598fc94abb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Friendship: 100
+  Friendship: 0
 --- !u!1001 &79354851
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2553,7 +2554,7 @@ GameObject:
   - component: {fileID: 389083781}
   - component: {fileID: 389083782}
   m_Layer: 0
-  m_Name: UI_Contorller
+  m_Name: UI_Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6660,6 +6661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachRange: 1.8
+  hitTarget: {fileID: 0}
 --- !u!114 &1259161559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6672,7 +6674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc88751eccf69784dbc8598fc94abb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Friendship: 100
+  Friendship: 0
 --- !u!1001 &1259805130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8022,6 +8024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachRange: 1.8
+  hitTarget: {fileID: 0}
 --- !u!114 &1657862314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8034,7 +8037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc88751eccf69784dbc8598fc94abb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Friendship: 100
+  Friendship: 0
 --- !u!1001 &1719459261
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10137,6 +10140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   reachRange: 1.8
+  hitTarget: {fileID: 0}
 --- !u!114 &2073115549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10149,7 +10153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc88751eccf69784dbc8598fc94abb54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Friendship: 100
+  Friendship: 0
 --- !u!1001 &2099345032
 PrefabInstance:
   m_ObjectHideFlags: 0
