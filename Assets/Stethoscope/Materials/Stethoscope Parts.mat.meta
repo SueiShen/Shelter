@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1a4e14a0dbfa96f458474e6973650adc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229076
+  packageName: Rigged Stethoscope
+  packageVersion: 1.0
+  assetPath: Assets/Stethoscope/Materials/Stethoscope Parts.mat
+  uploadId: 517048
