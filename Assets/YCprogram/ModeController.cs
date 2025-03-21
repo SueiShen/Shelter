@@ -11,6 +11,8 @@ public class ModeController : MonoBehaviour
     private Crouch Crouch;
     private Jump Jump;
     private Transform Pet_Canvas;
+    private Transform Shop_Canvas;
+    private ShopController ShopController;
     private PetableController PetableController;
     private PetableObj PetableObj;
     private Transform FirstPersonController;
@@ -26,6 +28,8 @@ public class ModeController : MonoBehaviour
         Jump = controller.GetComponent<Jump>();
         Crouch = controller.GetComponent<Crouch>();
         Pet_Canvas = transform.Find("Pet_Canvas");
+        Shop_Canvas = transform.Find("Shop_Canvas");
+        ShopController = Shop_Canvas.GetComponent<ShopController>();
         PetableController = GetComponent<PetableController>();
         FirstPersonController = gameObject.transform.parent;
 
@@ -34,7 +38,11 @@ public class ModeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyUp(KeyCode.P))
+        {
+            mode = "Shop_mode";
+            ShopController.GetData();
+        }
         switch (mode)
         {
             case "Sights_mode":
@@ -50,16 +58,23 @@ public class ModeController : MonoBehaviour
                 Pet_Canvas.gameObject.SetActive(true);
                 Moveable(false);
                 Cursor.lockState = CursorLockMode.None;
-                Cursor.visible=false;
+                Cursor.visible = false;
                 //Cursor.SetCursor(PetCursor,new Vector2(0,0),CursorMode.Auto);
-
+                break;
+            case "Shop_mode":
+                UIclose();
+                Shop_Canvas.gameObject.SetActive(true);
+                Moveable(false);
+                Cursor.lockState = CursorLockMode.None;
+                //ShopController.UpdateData();
                 break;
         }
     }
     void UIclose()
     {
-        Pet_Canvas.gameObject.SetActive(false);
         Sights_Canvas.gameObject.SetActive(false);
+        Pet_Canvas.gameObject.SetActive(false);
+        Shop_Canvas.gameObject.SetActive(false);
     }
     void Moveable(bool move)
     {
@@ -74,7 +89,7 @@ public class ModeController : MonoBehaviour
         //Debug.Log("LookTarget");
         FPC.LookAt(Target);
 
-        FirstPersonController.position = Target.position + Target.forward*1f;
+        FirstPersonController.position = Target.position + Target.forward * 1f;
     }
 
 }
