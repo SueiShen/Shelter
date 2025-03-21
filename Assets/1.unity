@@ -8050,6 +8050,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 444467171}
   m_CullTransparentMesh: 1
+--- !u!1001 &445172326
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 69.948
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 69.948
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 69.948
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 38.663
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.913
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.463
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.00000003774895
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
+      propertyPath: m_Name
+      value: SurgeryLamp
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5655142c5f02a54d8be25cccc69cc20, type: 3}
 --- !u!1 &451044229
 GameObject:
   m_ObjectHideFlags: 8
@@ -24702,6 +24771,63 @@ Transform:
   - {fileID: 1044376496}
   m_Father: {fileID: 1616239647}
   m_LocalEulerAnglesHint: {x: 0, y: 90.948, z: 0}
+--- !u!1001 &1114011413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 38.11211
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.03188467
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 21.448187
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7025749
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.0045092013
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7115809
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.004567004
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.73
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.735
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
+      propertyPath: m_Name
+      value: SurgeryBed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2406ee50a20585c40a9054a7fbfa8425, type: 3}
 --- !u!1 &1116040603
 GameObject:
   m_ObjectHideFlags: 0
@@ -56248,3 +56374,5 @@ SceneRoots:
   - {fileID: 1749883782}
   - {fileID: 1357540200}
   - {fileID: 408287211}
+  - {fileID: 1114011413}
+  - {fileID: 445172326}
