@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d28b2081cbeb6c249a4f5053a322a619
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 229076
+  packageName: Rigged Stethoscope
+  packageVersion: 1.0
+  assetPath: Assets/Stethoscope/Prefabs/Stethoscope.prefab
+  uploadId: 517048
