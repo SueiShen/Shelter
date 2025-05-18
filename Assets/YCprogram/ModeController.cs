@@ -12,6 +12,8 @@ public class ModeController : MonoBehaviour
     private Jump Jump;
     private Transform Pet_Canvas;
     private Transform Shop_Canvas;
+
+    private Transform Talk_Canvas;
     private ShopController ShopController;
     private PetableController PetableController;
     private PetableObj PetableObj;
@@ -30,9 +32,9 @@ public class ModeController : MonoBehaviour
         Pet_Canvas = transform.Find("Pet_Canvas");
         Shop_Canvas = transform.Find("Shop_Canvas");
         ShopController = Shop_Canvas.GetComponent<ShopController>();
+        Talk_Canvas = transform.Find("Talk_Canvas");
         PetableController = GetComponent<PetableController>();
         FirstPersonController = gameObject.transform.parent;
-
     }
 
     // Update is called once per frame
@@ -40,7 +42,7 @@ public class ModeController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            mode = "Shop_mode";
+            mode = "Talk_mode";
             ShopController.GetData();
         }
         switch (mode)
@@ -68,6 +70,12 @@ public class ModeController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 //ShopController.UpdateData();
                 break;
+            case "Talk_mode":
+                UIclose();
+                Talk_Canvas.gameObject.SetActive(true);
+                Moveable(false);
+                Cursor.lockState = CursorLockMode.None;
+                break;
         }
     }
     void UIclose()
@@ -75,6 +83,8 @@ public class ModeController : MonoBehaviour
         Sights_Canvas.gameObject.SetActive(false);
         Pet_Canvas.gameObject.SetActive(false);
         Shop_Canvas.gameObject.SetActive(false);
+        Talk_Canvas.gameObject.SetActive(false);
+        
     }
     void Moveable(bool move)
     {

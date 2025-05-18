@@ -1,52 +1,52 @@
 using UnityEngine;
-using TMPro; // ¤Þ¥Î TMP ¼Ò²Õ
+using TMPro; // ï¿½Þ¥ï¿½ TMP ï¿½Ò²ï¿½
 
 public class NPCGreeting : MonoBehaviour
 {
-    public TextMeshProUGUI greetingText; // ¥Î¨ÓÅã¥Ü°T®§ªº UI TextMeshPro ¤¸¯À
-    public AudioClip enterSound; // ª±®a¶i¤J½d³ò®É¼½©ñªº­µ®Ä
-    public AudioClip pressESound; // «ö¤U E Áä®É¼½©ñªº­µ®Ä
-    public AudioClip exitSound; // ª±®aÂ÷¶}½d³ò®É¼½©ñªº­µ®Ä
-    private AudioSource audioSource; // ­µ®Ä¼½©ñ¾¹
-    private bool isPlayerInRange = false; // ÀË¬dª±®a¬O§_¦b½d³ò¤º
+    public TextMeshProUGUI greetingText; // ï¿½Î¨ï¿½ï¿½ï¿½Ü°Tï¿½ï¿½ï¿½ï¿½ UI TextMeshPro ï¿½ï¿½ï¿½ï¿½
+    public AudioClip enterSound; // ï¿½ï¿½ï¿½aï¿½iï¿½Jï¿½dï¿½ï¿½É¼ï¿½ï¿½ñªº­ï¿½ï¿½ï¿½
+    public AudioClip pressESound; // ï¿½ï¿½ï¿½U E ï¿½ï¿½É¼ï¿½ï¿½ñªº­ï¿½ï¿½ï¿½
+    public AudioClip exitSound; // ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½}ï¿½dï¿½ï¿½É¼ï¿½ï¿½ñªº­ï¿½ï¿½ï¿½
+    private AudioSource audioSource; // ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
+    private bool isPlayerInRange = false; // ï¿½Ë¬dï¿½ï¿½ï¿½aï¿½Oï¿½_ï¿½bï¿½dï¿½ï¿½
 
     private void Start()
     {
-        // ªì©l¤Æ®É±N¤å¦r³]¬°ªÅ¡AÁ×§K¸ü¤J®ÉÅã¥Ü¶Ã½X
+        // ï¿½ï¿½lï¿½Æ®É±Nï¿½ï¿½rï¿½]ï¿½ï¿½ï¿½Å¡Aï¿½×§Kï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½ï¿½Ü¶Ã½X
         greetingText.text = "";
 
-        // ¨ú±o¨Ãªì©l¤Æ­µ®Ä¼½©ñ¾¹
+        // ï¿½ï¿½ï¿½oï¿½Ãªï¿½lï¿½Æ­ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
         audioSource = GetComponent<AudioSource>();
     }
-
+/*
     private void Update()
     {
-        // ¦pªGª±®a¦b½d³ò¤º¡A¨Ã¥B«ö¤U E Áä
+        // ï¿½pï¿½Gï¿½ï¿½ï¿½aï¿½bï¿½dï¿½ò¤º¡Aï¿½Ã¥Bï¿½ï¿½ï¿½U E ï¿½ï¿½
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.E))
         {
-            // Åã¥Ü"§A¦n"
+            // ï¿½ï¿½ï¿½"ï¿½Aï¿½n"
             greetingText.text = "Haven't Seen One of Those in a While";
 
-            // ¼½©ñ«ö¤U E Áäªº­µ®Ä
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½U E ï¿½äªºï¿½ï¿½ï¿½ï¿½
             if (pressESound != null)
             {
                 audioSource.PlayOneShot(pressESound);
             }
 
-            // ¥i¥H¿ï¾Ü¦b¤@¬q®É¶¡«áÁôÂÃ°T®§
-            Invoke("HideMessage", 2f);  // 2¬í«áÁôÂÃ°T®§
+            // ï¿½iï¿½Hï¿½ï¿½Ü¦bï¿½@ï¿½qï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã°Tï¿½ï¿½
+            Invoke("HideMessage", 2f);  // 2ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã°Tï¿½ï¿½
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // ÀË¬d¬O§_¬Oª±®a¡]®Ú¾Ú§Aªº³]©w¥i¯à·|¬OPlayer¼ÐÅÒ¡^
+        // ï¿½Ë¬dï¿½Oï¿½_ï¿½Oï¿½ï¿½ï¿½aï¿½]ï¿½Ú¾Ú§Aï¿½ï¿½ï¿½]ï¿½wï¿½iï¿½ï¿½|ï¿½OPlayerï¿½ï¿½ï¿½Ò¡^
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = true; // ª±®a¶i¤J½d³ò
-            greetingText.text = "welcome Take a Look Around"; // Åã¥Ü´£¥Ü°T®§
+            isPlayerInRange = true; // ï¿½ï¿½ï¿½aï¿½iï¿½Jï¿½dï¿½ï¿½
+            greetingText.text = "welcome Take a Look Around"; // ï¿½ï¿½Ü´ï¿½ï¿½Ü°Tï¿½ï¿½
 
-            // ¼½©ñª±®a¶i¤J½d³òªº­µ®Ä
+            // ï¿½ï¿½ï¿½ñª±®aï¿½iï¿½Jï¿½dï¿½òªº­ï¿½ï¿½ï¿½
             if (enterSound != null)
             {
                 audioSource.PlayOneShot(enterSound);
@@ -56,13 +56,13 @@ public class NPCGreeting : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        // ·íª±®aÂ÷¶}½d³ò
+        // ï¿½ï¿½ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½}ï¿½dï¿½ï¿½
         if (other.CompareTag("Player"))
         {
-            isPlayerInRange = false; // ª±®aÂ÷¶}½d³ò
-            greetingText.text = ""; // ²M°£´£¥Ü°T®§
+            isPlayerInRange = false; // ï¿½ï¿½ï¿½aï¿½ï¿½ï¿½}ï¿½dï¿½ï¿½
+            greetingText.text = ""; // ï¿½Mï¿½ï¿½ï¿½ï¿½ï¿½Ü°Tï¿½ï¿½
 
-            // ¼½©ñª±®aÂ÷¶}½d³òªº­µ®Ä
+            // ï¿½ï¿½ï¿½ñª±®aï¿½ï¿½ï¿½}ï¿½dï¿½òªº­ï¿½ï¿½ï¿½
             if (exitSound != null)
             {
                 audioSource.PlayOneShot(exitSound);
@@ -70,9 +70,10 @@ public class NPCGreeting : MonoBehaviour
         }
     }
 
-    // ÁôÂÃ°T®§ªº¤èªk
+    // ï¿½ï¿½ï¿½Ã°Tï¿½ï¿½ï¿½ï¿½ï¿½ï¿½k
     private void HideMessage()
     {
         greetingText.text = "";
     }
+    */
 }
