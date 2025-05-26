@@ -12,7 +12,6 @@ public class ClickSensor : MonoBehaviour,IPointerClickHandler
         Talk_Canvas = GameObject.Find("Talk_Canvas");
         if(Talk_Canvas != null){ Debug.Log("find"); }else{ Debug.Log("not find"); }
         DailogController = Talk_Canvas.GetComponent<DailogController>();
-        
     }
 
     // Update is called once per frame
@@ -23,6 +22,6 @@ public class ClickSensor : MonoBehaviour,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         DailogController.TurnAdd();
-        DailogController.SetDailog(Path.Combine(Application.dataPath, "YCprogram/plot/test.txt"));
+        
     }
 }

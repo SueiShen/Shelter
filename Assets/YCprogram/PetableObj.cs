@@ -32,7 +32,7 @@ public class PetableObj : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape))
         {
-            ModeController.mode = "Sights_mode";
+            ModeController.ModeChange("Sights_mode");
         }
         if (PetableController.hitTarget == gameObject)
         {

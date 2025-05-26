@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows;
 
 public class DailogController : MonoBehaviour
 {
@@ -18,6 +20,13 @@ public class DailogController : MonoBehaviour
     private TextMeshProUGUI Name_Self;
     private Image NameFrame_Self;
     private RawImage RawImage_Self;
+    private GameObject UI_Controller;
+    private ModeController ModeController;
+    Dictionary<string, string> Name = new Dictionary<string, string>
+    {
+        ["NURS"] = "資深社工",
+        ["DOCT"] = "獸醫師"
+    };
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -29,6 +38,9 @@ public class DailogController : MonoBehaviour
         Name_Self = GameObject.Find("Name_Self").GetComponent<TextMeshProUGUI>();
         NameFrame_Self = GameObject.Find("NameFrame_Self").GetComponent<Image>();
         RawImage_Self = GameObject.Find("RawImage_Self").GetComponent<RawImage>();
+        UI_Controller = GameObject.Find("UI_Controller");
+        ModeController = UI_Controller.GetComponent<ModeController>();
+        //ShowText();
     }
 
     // Update is called once per frame
@@ -41,17 +53,50 @@ public class DailogController : MonoBehaviour
         DailogNow = Locate;
         DailogTurn = 0;
         Lines = new string[0];
-        string Content = File.ReadAllText(Locate);
+        string Content = System.IO.File.ReadAllText(Locate);
         Lines = Content.Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None);
+        Texture2D texs = Resources.Load<Texture2D>("sprites/SELF/N01");
+        RawImage_Self.texture = texs;
         ShowText();
     }
     public void TurnAdd()
     {
+        DailogTurn += 1;
+        if (DailogTurn < Lines.Length)
+        {
+            ShowText();
+        }
+        else
+        {
+            Debug.Log("textout");
+            ModeController.ModeChange("Sights_mode");
+        }
 
     }
     private void ShowText()
     {
         string[] Message = Lines[DailogTurn].Split(new string[] { "|" }, System.StringSplitOptions.None);
+
         Dailog_Text.text = Message[2];
+        switch (Message[0])
+        {
+            case "SELF":
+                Texture2D texs = Resources.Load<Texture2D>(Path.Combine("sprites/SELF", Message[1]));
+                RawImage_Self.texture = texs;
+                RawImage_Self.color = Color.white;
+                NameFrame_Self.color = Color.white;
+                RawImage_Other.color = Color.gray;
+                NameFrame_Other.color = Color.gray;
+                break;
+            default:
+                Texture2D texo = Resources.Load<Texture2D>(Path.Combine("sprites", Message[0], Message[1]));
+                RawImage_Other.texture = texo;
+                Name_Other.text = Name[Message[0]];
+                RawImage_Other.color = Color.white;
+                NameFrame_Other.color = Color.white;
+                RawImage_Self.color = Color.gray;
+                NameFrame_Self.color = Color.gray;
+                break;
+        }
     }
 }

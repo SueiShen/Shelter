@@ -75,7 +75,7 @@ public class PetableController : MonoBehaviour
                 // Check if the hit object or its parent has PetableObj
                 if (!isEqualToParent(hit.collider, out petableObject))
                 {
-                    //Debug.Log("Raycast hit an object, but it's not interactable.");
+                    Debug.Log("Raycast hit an object, but it's not interactable.");
                     return;
                 }
 
@@ -88,7 +88,7 @@ public class PetableController : MonoBehaviour
                     if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
                     {
                         //Debug.Log("E key or Fire1 button pressed.");
-                        ModeController.mode = "Pet_mode";
+                        ModeController.ModeChange("Pet_mode");
                         showInteractMsg = false;
                         //ModeController.LookTarget(gameObject.transform);
                     }

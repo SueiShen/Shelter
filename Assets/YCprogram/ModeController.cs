@@ -35,6 +35,8 @@ public class ModeController : MonoBehaviour
         Talk_Canvas = transform.Find("Talk_Canvas");
         PetableController = GetComponent<PetableController>();
         FirstPersonController = gameObject.transform.parent;
+
+        //ModeChange("Sights_mode");
     }
 
     // Update is called once per frame
@@ -42,10 +44,36 @@ public class ModeController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            mode = "Talk_mode";
+            ModeChange("Shop_mode");
             ShopController.GetData();
         }
-        switch (mode)
+    }
+    void UIclose()
+    {
+        Sights_Canvas.gameObject.SetActive(false);
+        Pet_Canvas.gameObject.SetActive(false);
+        Shop_Canvas.gameObject.SetActive(false);
+        Talk_Canvas.gameObject.SetActive(false);
+
+    }
+    void Moveable(bool move)
+    {
+        FirstPersonLook.Turnable = move;
+        FirstPersonMovement.Moveable = move;
+        Jump.Jumpable = move;
+        Crouch.Crouchable = move;
+    }
+    private Quaternion savedRotation;
+    public void LookTarget(Transform Target)
+    {
+        //Debug.Log("LookTarget");
+        FPC.LookAt(Target);
+
+        FirstPersonController.position = Target.position + Target.forward * 1f;
+    }
+    public void ModeChange(string ModeTo)
+    {
+        switch (ModeTo)
         {
             case "Sights_mode":
                 UIclose();
@@ -77,29 +105,6 @@ public class ModeController : MonoBehaviour
                 Cursor.lockState = CursorLockMode.None;
                 break;
         }
+        mode = ModeTo;
     }
-    void UIclose()
-    {
-        Sights_Canvas.gameObject.SetActive(false);
-        Pet_Canvas.gameObject.SetActive(false);
-        Shop_Canvas.gameObject.SetActive(false);
-        Talk_Canvas.gameObject.SetActive(false);
-        
-    }
-    void Moveable(bool move)
-    {
-        FirstPersonLook.Turnable = move;
-        FirstPersonMovement.Moveable = move;
-        Jump.Jumpable = move;
-        Crouch.Crouchable = move;
-    }
-    private Quaternion savedRotation;
-    public void LookTarget(Transform Target)
-    {
-        //Debug.Log("LookTarget");
-        FPC.LookAt(Target);
-
-        FirstPersonController.position = Target.position + Target.forward * 1f;
-    }
-
 }
