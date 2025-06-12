@@ -52530,7 +52530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f646d302f0be7a4a990eb9ae78f50fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetText: C:/Users/pTATq/Unity/Shelter/Assets\YCprogram/plot/test.txt
+  TargetText: Assets/YCprogram/plot/test.txt
 --- !u!1001 &2073115542
 PrefabInstance:
   m_ObjectHideFlags: 0
