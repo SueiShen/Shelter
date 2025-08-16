@@ -12,31 +12,38 @@ public class ModeController : MonoBehaviour
     private Jump Jump;
     private Transform Pet_Canvas;
     private Transform Shop_Canvas;
-
     private Transform Talk_Canvas;
+    public Transform Minigames_Canvas;
     private ShopController ShopController;
     private PetableController PetableController;
     private PetableObj PetableObj;
     private Transform FirstPersonController;
 
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Sights_Canvas = transform.Find("Sights_Canvas");
-        FPC = transform.parent.Find("First Person Camera");
-        FirstPersonLook = FPC.GetComponent<FirstPersonLook>();
-        Transform controller = FPC.parent;
-        FirstPersonMovement = controller.GetComponent<FirstPersonMovement>();
-        Jump = controller.GetComponent<Jump>();
-        Crouch = controller.GetComponent<Crouch>();
-        Pet_Canvas = transform.Find("Pet_Canvas");
-        Shop_Canvas = transform.Find("Shop_Canvas");
-        ShopController = Shop_Canvas.GetComponent<ShopController>();
-        Talk_Canvas = transform.Find("Talk_Canvas");
-        PetableController = GetComponent<PetableController>();
-        FirstPersonController = gameObject.transform.parent;
-
-        //ModeChange("Sights_mode");
+        try
+        {
+            Sights_Canvas = transform.Find("Sights_Canvas");
+            FPC = transform.parent.Find("First Person Camera");
+            FirstPersonLook = FPC.GetComponent<FirstPersonLook>();
+            Transform controller = FPC.parent;
+            FirstPersonMovement = controller.GetComponent<FirstPersonMovement>();
+            Jump = controller.GetComponent<Jump>();
+            Crouch = controller.GetComponent<Crouch>();
+            Pet_Canvas = transform.Find("Pet_Canvas");
+            Shop_Canvas = transform.Find("Shop_Canvas");
+            ShopController = Shop_Canvas.GetComponent<ShopController>();
+            Talk_Canvas = transform.Find("Talk_Canvas");
+            PetableController = GetComponent<PetableController>();
+            FirstPersonController = gameObject.transform.parent;
+            Minigames_Canvas = transform.Find("Minigames_Canvas");
+        }
+        finally
+        {
+            //ModeChange("Sights_mode");
+        }
     }
 
     // Update is called once per frame
@@ -44,8 +51,8 @@ public class ModeController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            ModeChange("Shop_mode");
-            ShopController.GetData();
+            //ModeChange("Shop_mode");
+            //ShopController.GetData();
         }
     }
     void UIclose()
@@ -54,6 +61,7 @@ public class ModeController : MonoBehaviour
         Pet_Canvas.gameObject.SetActive(false);
         Shop_Canvas.gameObject.SetActive(false);
         Talk_Canvas.gameObject.SetActive(false);
+        Minigames_Canvas.gameObject.SetActive(false);
 
     }
     void Moveable(bool move)
@@ -101,6 +109,12 @@ public class ModeController : MonoBehaviour
             case "Talk_mode":
                 UIclose();
                 Talk_Canvas.gameObject.SetActive(true);
+                Moveable(false);
+                Cursor.lockState = CursorLockMode.None;
+                break;
+            case "Catch_mode":
+                UIclose();
+                Minigames_Canvas.gameObject.SetActive(true);
                 Moveable(false);
                 Cursor.lockState = CursorLockMode.None;
                 break;

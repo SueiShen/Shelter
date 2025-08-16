@@ -88,6 +88,10 @@ public class DailogController : MonoBehaviour
                 RawImage_Other.color = Color.gray;
                 NameFrame_Other.color = Color.gray;
                 break;
+            case "CAHG":
+                Debug.Log("ingame");
+                ModeController.ModeChange("Catch_mode");
+                break;
             default:
                 Texture2D texo = Resources.Load<Texture2D>(Path.Combine("sprites", Message[0], Message[1]));
                 RawImage_Other.texture = texo;
