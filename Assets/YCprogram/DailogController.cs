@@ -4,14 +4,13 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 
 public class DailogController : MonoBehaviour
 {
+    private TalkableObj currentNpc;
     public string DailogNow = "";
     public int DailogTurn = 0;
     private string[] Lines;
-    private string TextNow = "";
     private TextMeshProUGUI Dailog_Text;
     private Image Dailog_Frame;
     private TextMeshProUGUI Name_Other;
@@ -27,7 +26,7 @@ public class DailogController : MonoBehaviour
         ["NURS"] = "資深社工",
         ["DOCT"] = "獸醫師"
     };
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
     void Start()
     {
         Dailog_Text = GameObject.Find("Dailog_Text").GetComponent<TextMeshProUGUI>();
@@ -40,25 +39,23 @@ public class DailogController : MonoBehaviour
         RawImage_Self = GameObject.Find("RawImage_Self").GetComponent<RawImage>();
         UI_Controller = GameObject.Find("UI_Controller");
         ModeController = UI_Controller.GetComponent<ModeController>();
-        //ShowText();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void StartDialogue(TalkableObj npc)
     {
-
-    }
-    public void SetDailog(string Locate)
-    {
+        currentNpc = npc;
+        Debug.Log("DailogController 開始對話，NPC是：" + currentNpc.gameObject.name);
+        string Locate = currentNpc.TargetText;
         DailogNow = Locate;
         DailogTurn = 0;
         Lines = new string[0];
-        string Content = System.IO.File.ReadAllText(Locate);
-        Lines = Content.Split(new string[] { "\r\n", "\n" }, System.StringSplitOptions.None);
+        string Content = File.ReadAllText(Locate);
+        Lines = Content.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
         Texture2D texs = Resources.Load<Texture2D>("sprites/SELF/N01");
-        RawImage_Self.texture = texs;
+        if (RawImage_Self != null) RawImage_Self.texture = texs;
         ShowText();
     }
+
     public void TurnAdd()
     {
         DailogTurn += 1;
@@ -68,14 +65,30 @@ public class DailogController : MonoBehaviour
         }
         else
         {
-            Debug.Log("textout");
-            ModeController.ModeChange("Sights_mode");
+            EndCurrentDialogue();
         }
-
     }
+
+    public void EndCurrentDialogue()
+    {
+        Debug.Log("--- 偵測到對話結束！正在通知 NPC... ---");
+        if (currentNpc != null)
+        {
+            currentNpc.DialogueFinished();
+            currentNpc = null;
+        }
+        Debug.Log("對話UI關閉，模式切換回 Sights_mode");
+        ModeController.ModeChange("Sights_mode");
+    }
+
     private void ShowText()
     {
-        string[] Message = Lines[DailogTurn].Split(new string[] { "|" }, System.StringSplitOptions.None);
+        // 增加保護，防止對話行為空
+        if (Lines == null || DailogTurn >= Lines.Length || string.IsNullOrEmpty(Lines[DailogTurn])) return;
+
+        string[] Message = Lines[DailogTurn].Split(new string[] { "|" }, StringSplitOptions.None);
+
+        if (Message.Length < 3) return; // 保護，防止格式不符
 
         Dailog_Text.text = Message[2];
         switch (Message[0])
