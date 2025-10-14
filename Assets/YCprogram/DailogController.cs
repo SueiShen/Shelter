@@ -71,6 +71,7 @@ public class DailogController : MonoBehaviour
 
     public void EndCurrentDialogue()
     {
+        /*
         Debug.Log("--- 偵測到對話結束！正在通知 NPC... ---");
         if (currentNpc != null)
         {
@@ -79,6 +80,7 @@ public class DailogController : MonoBehaviour
         }
         Debug.Log("對話UI關閉，模式切換回 Sights_mode");
         ModeController.ModeChange("Sights_mode");
+        */
     }
 
     private void ShowText()

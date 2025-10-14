@@ -10,6 +10,8 @@ public class MinigamesController : MonoBehaviour
     [SerializeField]                 // 私有欄位但仍可在 Inspector 指派
     private TextMeshPro scoreText; // UI 文字元件（Canvas 上的 TMP 文本），用來顯示倒數
     [SerializeField] private GameObject tutorialPanel;
+    [SerializeField] private GameObject ScorePanel;
+    //[SerializeField] private TextMeshPro FinScoreText;
 
     [Header("掉落物設定")]           // 另一個 Inspector 分隔標題
     public GameObject[] dropsPrefabs;   // 要生成的 Drops 預製物（Prefab）
@@ -38,6 +40,7 @@ public class MinigamesController : MonoBehaviour
         timeLeft = countdownTime;
         //Time.timeScale = 0f;         // 遊戲暫停
         tutorialPanel.SetActive(true); // 顯示玩法說明
+        ScorePanel.SetActive(false);
     }
     void Update()
     {
@@ -46,7 +49,10 @@ public class MinigamesController : MonoBehaviour
             {
                 StartGame();
             }
-            
+            if (gameStarted && Input.anyKeyDown && ModeController.mode=="Catch_mode" && timeLeft <= 0) // 按任意鍵開始
+            {
+                ModeController.ModeChange("Sights_mode");
+            }
 
     }
     public void StartGame()
@@ -68,6 +74,8 @@ public class MinigamesController : MonoBehaviour
         }
 
         scoreText.text = "時間到!";
+        ScorePanel.SetActive(true);
+        //FinScoreText.text = TotalScore.ToString() + "分";
         //ModeController.ModeChange("Pet_mode");
     }
     private IEnumerator SpawnDropsRoutine() // 第二條協程：控制生成掉落物

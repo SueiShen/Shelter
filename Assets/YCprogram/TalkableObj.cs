@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class TalkableObj : MonoBehaviour
 {
-    // ¥¦¥u¬O¤@­Ó¼Æ¾Ú®e¾¹¡A¤£»Ý­nª¾¹D¨ä¥L±±¨î¾¹
-    [HideInInspector] // ¦b Inspector ÁôÂÃ¡A¦]¬°¥¦¥Ñ PetableObj ±±¨î
+    // ï¿½ï¿½ï¿½uï¿½Oï¿½@ï¿½Ó¼Æ¾Ú®eï¿½ï¿½ï¿½Aï¿½ï¿½ï¿½Ý­nï¿½ï¿½ï¿½Dï¿½ï¿½Lï¿½ï¿½ï¿½î¾¹
+    [SerializeField] // ï¿½b Inspector ï¿½ï¿½ï¿½Ã¡Aï¿½]ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ PetableObj ï¿½ï¿½ï¿½ï¿½
     public string TargetText;
 
-    [HideInInspector]
+    [SerializeField]
     public bool isEndGameDialogue = false;
 
     void Awake()
     {
-        // ³]©wªì©l¹ï¸Ü
-        TargetText = Path.Combine(Application.dataPath, "YCprogram/plot/test.txt");
+        // ï¿½]ï¿½wï¿½ï¿½lï¿½ï¿½ï¿½
+        //TargetText = Path.Combine(Application.dataPath, "YCprogram/plot/first.txt");
     }
 
-    // ³o­Ó¨ç¦¡¬O°ß¤@¹ï¥~ªº±µ¤f¡Aµ¥«Ý DailogController ¨Ó©I¥s
+    // ï¿½oï¿½Ó¨ç¦¡ï¿½Oï¿½ß¤@ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½fï¿½Aï¿½ï¿½ï¿½ï¿½ DailogController ï¿½Ó©Iï¿½s
     public void DialogueFinished()
     {
-        Debug.Log("--- TalkableObj: DialogueFinished() ³Q©I¥s¡I isEndGameDialogue ªº­È¬O: " + isEndGameDialogue + " ---");
+        Debug.Log("--- TalkableObj: DialogueFinished() ï¿½Qï¿½Iï¿½sï¿½I isEndGameDialogue ï¿½ï¿½ï¿½È¬O: " + isEndGameDialogue + " ---");
 
         if (isEndGameDialogue)
         {
@@ -29,7 +29,7 @@ public class TalkableObj : MonoBehaviour
 
     void QuitGame()
     {
-        Debug.Log("--- TalkableObj: ¥¿¦bµ²§ô¹CÀ¸... ---");
+        Debug.Log("--- TalkableObj: ï¿½ï¿½ï¿½bï¿½ï¿½ï¿½ï¿½ï¿½Cï¿½ï¿½... ---");
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 #else
