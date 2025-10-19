@@ -8706,7 +8706,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u73FE\u5728\u4F60\u53EF\u4EE5\u628A\u8D0A\u52A9\u5546\u540D\u7A31\u653E\u9019\u88E1"
+  m_text: "\u597D\u98DF\u8089\u6CE5"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}
   m_sharedMaterial: {fileID: 1564110672866659968, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}
@@ -11726,7 +11726,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8D0A\u52A9\u5546\u540D\u7A313"
+  m_text: "\u597D\u597D\u5403\u72D7\u72D7\u7F50\u982D"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}
   m_sharedMaterial: {fileID: 1564110672866659968, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}
@@ -26145,7 +26145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3dd5bab5f800c428ebdfc34b86f22d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalGold: 100
+  LocalGold: 1000
   Item1Price: 50
   LocalItem1Stock: 0
   Item2Price: 25
@@ -45651,7 +45651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 8de816788eaf2dc4c8ef19f862f16a5d, type: 3}
+  m_Texture: {fileID: 2800000, guid: fbaddbd057eea2242b4ef55dd9ff0716, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -48390,7 +48390,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 6a717e8e130a4a6489529bced9418b92, type: 3}
+  m_Texture: {fileID: 2800000, guid: dba0fbcec40e1e7459aa6e7822e305a5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -50009,7 +50009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 3b29ad99ae55f12459e7cc974c362b95, type: 3}
+  m_Texture: {fileID: 2800000, guid: fb4511dd414186e42b22bdb860c087a8, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -53109,7 +53109,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u8D0A\u52A9\u5546\u540D\u7A312"
+  m_text: "\u958B\u5FC3\u8C93\u8C93\u98FC\u6599"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}
   m_sharedMaterial: {fileID: 1564110672866659968, guid: bc734e491ffbbfc4dbf5a3b16ed89a3b, type: 2}

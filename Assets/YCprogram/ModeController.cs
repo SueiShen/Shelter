@@ -51,7 +51,7 @@ public class ModeController : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.P))
         {
-            //ModeChange("Shop_mode");
+            ModeChange("Shop_mode");
             //ShopController.GetData();
         }
     }

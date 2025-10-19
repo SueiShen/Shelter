@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ShopController : MonoBehaviour
 {
-    public int LocalGold = 100;
+    public int LocalGold = 1000;
     public int Item1Price = 50;
     public int LocalItem1Stock = 0;
     public int Item2Price = 25;
